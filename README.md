@@ -1,5 +1,11 @@
 # Rest API boilerplate using Koa2 & ES2017
 
+[![dependency Status](https://david-dm.org/pranavpr/koa2-es2017-api-boilerplate.svg)](https://david-dm.org/pranavpr/koa2-es2017-api-boilerplate)
+[![devDependency Status](https://david-dm.org/pranavpr/koa2-es2017-api-boilerplate/dev-status.svg)](https://david-dm.org/pranavpr/koa2-es2017-api-boilerplate?type=dev)
+[![Coverage Status](https://coveralls.io/repos/github/pranavpr/koa2-es2017-api-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/pranavpr/koa2-es2017-api-boilerplate?branch=master)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+
 A mostly unopinionated starter project for creating RESTful APIs using Koa2 and ES2017+ features in a Node.js server environment as well as providing linting and testing support. It provides the setup for compiling, linting and testing your code but doesn't make any further assumptions on how your project should be structured.
 
 Make sure you read the FAQ for more details and info.
