@@ -1,6 +1,6 @@
 import Koa from "koa";
 import cors from "kcors";
-import logger from "koa-logger";
+import logger from "koa-morgan";
 import bodyParser from "koa-bodyparser";
 import errorHandler from "koa-better-error-handler";
 import router from "./routes";
@@ -17,9 +17,11 @@ app.use(
 );
 
 // Logger
-if (app.env != "test") {
-    app.use(logger());
-}
+app.use(
+    logger("dev", {
+        skip: () => app.env === "test"
+    })
+);
 
 // Enable CORS
 app.use(cors());
