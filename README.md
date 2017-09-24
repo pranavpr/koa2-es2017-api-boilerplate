@@ -1,8 +1,9 @@
 # Rest API boilerplate using Koa2 & ES2017
 
+[![CircleCI](https://circleci.com/gh/pranavpr/koa2-es2017-api-boilerplate.svg?style=shield)](https://circleci.com/gh/pranavpr/koa2-es2017-api-boilerplate)
+[![Coverage Status](https://coveralls.io/repos/github/pranavpr/koa2-es2017-api-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/pranavpr/koa2-es2017-api-boilerplate?branch=master)
 [![dependency Status](https://david-dm.org/pranavpr/koa2-es2017-api-boilerplate.svg)](https://david-dm.org/pranavpr/koa2-es2017-api-boilerplate)
 [![devDependency Status](https://david-dm.org/pranavpr/koa2-es2017-api-boilerplate/dev-status.svg)](https://david-dm.org/pranavpr/koa2-es2017-api-boilerplate?type=dev)
-[![Coverage Status](https://coveralls.io/repos/github/pranavpr/koa2-es2017-api-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/pranavpr/koa2-es2017-api-boilerplate?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 
