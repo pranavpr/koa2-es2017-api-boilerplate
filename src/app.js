@@ -2,7 +2,6 @@ import Koa from "koa";
 import cors from "kcors";
 import logger from "koa-morgan";
 import bodyParser from "koa-bodyparser";
-import errorHandler from "koa-better-error-handler";
 import router from "./routes";
 
 const app = new Koa();
@@ -26,13 +25,6 @@ app.use(
 // Enable CORS
 app.use(cors());
 
-// Better error handler
-app.context.onerror = errorHandler;
-app.context.api = true;
-
-// Routes
-app.use(router.routes());
-
 // Default error handler middleware
 app.use(async (ctx, next) => {
     try {
@@ -41,9 +33,16 @@ app.use(async (ctx, next) => {
             ctx.throw(404);
         }
     } catch (err) {
-        ctx.throw(err);
+        ctx.status = err.statusCode || err.status || 500;
+        ctx.body = {
+            statusCode: ctx.status,
+            message: err.message
+        };
         ctx.app.emit("error", err, ctx);
     }
 });
+
+// Routes
+app.use(router.routes());
 
 export default app;
