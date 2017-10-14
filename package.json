@@ -1,101 +1,95 @@
 {
-    "name": "koa2-es2017-api-boilerplate",
-    "version": "1.0.0",
-    "description": "Rest API boilerplate using Koa2 and ES2017",
-    "author": "Pranav Prakash <pranav@pranavprakash.net>",
-    "main": "dist/index.js",
-    "engines": {
-        "node": "~8.5.0",
-        "npm": ">=5.3.0"
-    },
-    "scripts": {
-        "prestart": "npm run -s build",
-        "start": "node dist/index.js",
-        "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
-        "clean": "rimraf dist",
-        "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
-        "test": "jest",
-        "lint": "esw -w src test"
-    },
-    "keywords": [
-        "koa2",
-        "babel",
-        "es6",
-        "es2015",
-        "es2016",
-        "es2017",
-        "jest",
-        "eslint"
-    ],
-    "license": "MIT",
-    "dependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-plugin-transform-object-rest-spread": "^6.26.0",
-        "babel-preset-env": "^1.6.0",
-        "kcors": "^2.2.1",
-        "koa": "^2.3.0",
-        "koa-bodyparser": "^4.2.0",
-        "koa-morgan": "^1.0.1",
-        "koa-router": "^7.2.1",
-        "rimraf": "^2.6.2"
-    },
-    "devDependencies": {
-        "babel-eslint": "^8.0.0",
-        "babel-jest": "^21.0.2",
-        "babel-register": "^6.26.0",
-        "dotenv": "^4.0.0",
-        "eslint": "^4.7.2",
-        "eslint-plugin-import": "^2.7.0",
-        "eslint-plugin-jest": "^21.1.0",
-        "eslint-watch": "^3.1.2",
-        "jest": "^21.1.0",
-        "nodemon": "^1.12.1",
-        "supertest": "^3.0.0"
-    },
-    "babel": {
-        "presets": [
-            [
-                "env",
-                {
-                    "targets": {
-                        "node": "current"
-                    }
-                }
-            ]
-        ],
-        "plugins": [
-            "transform-object-rest-spread"
-        ],
-        "sourceMaps": true,
-        "retainLines": true
-    },
-    "eslintConfig": {
-        "parser": "babel-eslint",
-        "plugins": [
-            "import",
-            "jest"
-        ],
-        "parserOptions": {
-            "ecmaVersion": 2017,
-            "sourceType": "module"
-        },
-        "env": {
-            "node": true,
-            "jest": true,
-            "es6": true
-        },
-        "extends": [
-            "eslint:recommended"
-        ],
-        "rules": {
-            "jest/no-focused-tests": 2,
-            "jest/no-identical-title": 2
+  "name": "koa2-es2017-api-boilerplate",
+  "version": "1.0.0",
+  "description": "Rest API boilerplate using Koa2 and ES2017",
+  "author": "Pranav Prakash <pranav@pranavprakash.net>",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "~8.5.0",
+    "npm": ">=5.3.0"
+  },
+  "scripts": {
+    "prestart": "npm run -s build",
+    "start": "node dist/index.js",
+    "dev":
+      "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "clean": "rimraf dist",
+    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "test": "jest",
+    "lint": "esw -w src test"
+  },
+  "keywords": [
+    "koa2",
+    "babel",
+    "es6",
+    "es2015",
+    "es2016",
+    "es2017",
+    "jest",
+    "eslint"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "2",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-morgan": "^1.0.1",
+    "koa-router": "^7.2.1",
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "babel-jest": "^21.0.2",
+    "babel-register": "^6.26.0",
+    "dotenv": "^4.0.0",
+    "eslint": "^4.7.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.1.0",
+    "eslint-watch": "^3.1.2",
+    "jest": "^21.1.0",
+    "nodemon": "^1.12.1",
+    "supertest": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
         }
+      ]
+    ],
+    "plugins": ["transform-object-rest-spread"],
+    "sourceMaps": true,
+    "retainLines": true
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": ["import", "jest"],
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
     },
-    "jest": {
-        "testEnvironment": "node"
+    "env": {
+      "node": true,
+      "jest": true,
+      "es6": true
     },
-    "directories": {
-        "test": "test"
+    "extends": ["eslint:recommended"],
+    "rules": {
+      "jest/no-focused-tests": 2,
+      "jest/no-identical-title": 2
     }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "directories": {
+    "test": "test"
+  }
 }
