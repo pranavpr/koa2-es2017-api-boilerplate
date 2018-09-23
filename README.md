@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 
-A mostly unopinionated starter project for creating RESTful APIs using Koa2 and ES2017+ features in a Node.js server environment as well as providing linting and testing support. It provides the setup for compiling, linting and testing your code but doesn't make any further assumptions on how your project should be structured.
+An opinionated starter project for creating RESTful APIs using Koa2 and ES2017+ features in a Node.js server environment as well as providing linting and testing support. It provides the setup for compiling, linting and testing your code but doesn't make any further assumptions on how your project should be structured.
 
 Make sure you read the FAQ for more details and info.
 
