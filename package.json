@@ -16,7 +16,7 @@
     "clean": "rimraf dist",
     "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
     "test": "jest",
-    "lint": "esw -w src test"
+    "prettier": "prettier --list-different '{src,test}/**/*{js,ts}'"
   },
   "keywords": [
     "koa2",
@@ -30,10 +30,11 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/register": "^7.0.0",
     "@koa/cors": "2",
-    "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",
@@ -41,22 +42,19 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.0",
-    "babel-jest": "^21.0.2",
-    "babel-register": "^6.26.0",
+    "@babel/plugin-transform-typescript": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
     "dotenv": "^4.0.0",
-    "eslint": "^4.7.2",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^21.1.0",
-    "eslint-watch": "^3.1.2",
     "jest": "^21.1.0",
     "nodemon": "^1.12.1",
+    "prettier": "1.14.3",
     "supertest": "^3.0.0"
   },
   "babel": {
     "presets": [
       [
         "env",
+        "@babel/preset-typescript",
         {
           "targets": {
             "node": "current"

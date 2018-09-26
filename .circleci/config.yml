@@ -36,6 +36,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+        # run prettier!
+      - run:
+          name: Prettier
+          command: yarn prettier
+
       # run tests!
       - run:
           name: Test
