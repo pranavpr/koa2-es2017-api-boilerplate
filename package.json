@@ -11,12 +11,11 @@
   "scripts": {
     "prestart": "npm run -s build",
     "start": "node dist/index.js",
-    "dev":
-      "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r @babel/register\"",
     "clean": "rimraf dist",
     "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
     "test": "jest",
-    "prettier": "prettier --list-different '{src,test}/**/*{js,ts}'"
+    "prettier": "prettier --list-different \"{src,test}/**/*{js,ts}\""
   },
   "keywords": [
     "koa2",
@@ -25,16 +24,13 @@
     "es2015",
     "es2016",
     "es2017",
-    "jest",
-    "eslint"
+    "jest"
   ],
   "license": "MIT",
   "dependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
-    "@babel/register": "^7.0.0",
     "@koa/cors": "2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",
@@ -42,8 +38,11 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-typescript": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@babel/register": "^7.0.0",
     "dotenv": "^4.0.0",
     "jest": "^21.1.0",
     "nodemon": "^1.12.1",
@@ -53,36 +52,20 @@
   "babel": {
     "presets": [
       [
-        "env",
-        "@babel/preset-typescript",
+        "@babel/preset-env",
         {
           "targets": {
             "node": "current"
           }
         }
-      ]
+      ],
+      "@babel/preset-typescript"
     ],
-    "plugins": ["transform-object-rest-spread"],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ],
     "sourceMaps": true,
     "retainLines": true
-  },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "plugins": ["import", "jest"],
-    "parserOptions": {
-      "ecmaVersion": 2017,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true,
-      "jest": true,
-      "es6": true
-    },
-    "extends": ["eslint:recommended"],
-    "rules": {
-      "jest/no-focused-tests": 2,
-      "jest/no-identical-title": 2
-    }
   },
   "jest": {
     "testEnvironment": "node"
