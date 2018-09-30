@@ -4,47 +4,46 @@
 #
 version: 2
 jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.5.0
+    build:
+        docker:
+            # specify the version you desire here
+            - image: circleci/node:8.12.0
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-    environment:
-      TZ: Asia/Kolkata
-    working_directory: ~/repo
+            # Specify service dependencies here if necessary
+            # CircleCI maintains a library of pre-built images
+            # documented at https://circleci.com/docs/2.0/circleci-images/
+            # - image: circleci/mongo:3.4.4
+        environment:
+            TZ: Asia/Kolkata
+        working_directory: ~/repo
 
-    steps:
-      - checkout
+        steps:
+            - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "package.json" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - v1-dependencies-
 
-      - run:
-          name: Install Dependencies
-          command: yarn install && yarn add -D codecov jest-junit
+            - run:
+                  name: Install Dependencies
+                  command: yarn install && yarn add -D codecov jest-junit
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - save_cache:
+                  paths:
+                      - node_modules
+                  key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
-      - run:
-          name: Test
-          command: JEST_JUNIT_OUTPUT=coverage/test-results.xml yarn test --coverage --testResultsProcessor ./node_modules/jest-junit
-      - run:
-          name: Send Coverage
-          command: yarn run codecov
-      - store_test_results:
-          path: coverage
-      - store_artifacts:
-          path: coverage
-
+            # run tests!
+            - run:
+                  name: Test
+                  command: JEST_JUNIT_OUTPUT=coverage/test-results.xml yarn test --coverage --testResultsProcessor ./node_modules/jest-junit
+            - run:
+                  name: Send Coverage
+                  command: yarn run codecov
+            - store_test_results:
+                  path: coverage
+            - store_artifacts:
+                  path: coverage
