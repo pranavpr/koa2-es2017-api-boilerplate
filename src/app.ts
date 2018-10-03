@@ -1,7 +1,7 @@
-import Koa from 'koa';
-import cors from '@koa/cors';
-import logger from 'koa-morgan';
-import bodyParser from 'koa-bodyparser';
+import * as Koa from 'koa';
+import * as cors from '@koa/cors';
+import * as logger from 'koa-morgan';
+import * as bodyParser from 'koa-bodyparser';
 import router from './routes';
 
 const app = new Koa();
@@ -11,14 +11,14 @@ app.use(
   bodyParser({
     enableTypes: ['json', 'form'],
     formLimit: '10mb',
-    jsonLimit: '10mb'
+    jsonLimit: '10mb',
   })
 );
 
 // Logger
 app.use(
   logger('dev', {
-    skip: () => app.env === 'test'
+    skip: () => app.env === 'test',
   })
 );
 
@@ -26,7 +26,7 @@ app.use(
 app.use(cors());
 
 // Default error handler middleware
-app.use(async (ctx, next) => {
+app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
   try {
     await next();
     if (ctx.status === 404) {
@@ -36,7 +36,7 @@ app.use(async (ctx, next) => {
     ctx.status = err.statusCode || err.status || 500;
     ctx.body = {
       statusCode: ctx.status,
-      message: err.message
+      message: err.message,
     };
     ctx.app.emit('error', err, ctx);
   }
