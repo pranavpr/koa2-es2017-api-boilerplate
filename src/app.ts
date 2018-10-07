@@ -4,7 +4,7 @@ import * as logger from 'koa-morgan';
 import * as bodyParser from 'koa-bodyparser';
 import router from './routes';
 
-const app = new Koa();
+const app: Koa = new Koa();
 
 // Set middlewares
 app.use(

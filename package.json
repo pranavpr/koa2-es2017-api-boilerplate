@@ -16,7 +16,8 @@
     "test": "jest",
     "lint": "prettier --write \"{src,test}/**/*{js,ts}\"",
     "prettier": "prettier --list-different \"{src,test}/**/*{js,ts}\"",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "codecov": "codecov"
   },
   "lint-staged": {
     "*.{ts,js}": [
@@ -36,6 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "@koa/cors": "2",
+    "@types/dotenv": "^4.0.3",
     "@types/es6-promise": "^3.3.0",
     "@types/koa": "^2.0.46",
     "@types/koa-bodyparser": "^5.0.1",
@@ -43,24 +45,51 @@
     "@types/koa-router": "^7.0.32",
     "@types/koa__cors": "^2.2.3",
     "@types/node": "^10.11.3",
+    "@types/supertest": "^2.0.6",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",
     "koa-router": "^7.2.1"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.3",
+    "codecov": "^3.1.0",
     "dotenv": "^4.0.0",
     "husky": "^1.1.0",
-    "jest": "^21.1.0",
+    "jest": "^21.2.1",
+    "jest-junit": "^5.2.0",
     "lint-staged": "^7.3.0",
     "nodemon": "^1.12.1",
     "prettier": "1.14.3",
     "supertest": "^3.0.0",
+    "ts-jest": "^23.10.4",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.1"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/.circle/",
+      "<rootDir>/dist/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "testRegex": "(/test/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(t|j)s?$": "ts-jest"
+    }
   },
   "directories": {
     "test": "test"

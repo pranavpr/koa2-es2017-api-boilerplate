@@ -1,4 +1,4 @@
-import request from 'supertest';
+import * as request from 'supertest';
 import server from '../src';
 
 afterEach(() => {

@@ -1,16 +1,15 @@
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
-import { name, version } from '../package.json';
+import * as pkgJson from '../package.json';
 
-const router = new Router();
+const router: Router = new Router();
+const appName: string = pkgJson.name;
+const appVersion: string = pkgJson.version;
 
-/**
- * GET /
- */
 router.get('/', async (ctx: Koa.Context) => {
   ctx.body = {
-    app: name,
-    version: version,
+    app: appName,
+    version: appVersion,
   };
 });
 
