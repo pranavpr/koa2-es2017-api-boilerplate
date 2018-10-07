@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig",
-  "globals": {
-    "ts-jest": {
-      "useBabelrc": true,
-      "tsConfigFile": "tsconfig.jest.json"
-    }
-  },
-}
