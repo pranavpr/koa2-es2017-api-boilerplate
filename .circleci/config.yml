@@ -44,7 +44,7 @@ jobs:
       # run tests!
       - run:
           name: Test
-          command: JEST_JUNIT_OUTPUT=coverage/test-results.xml npm run test --coverage --testResultsProcessor ./node_modules/jest-junit
+          command: JEST_JUNIT_OUTPUT=coverage/test-results.xml npm run test --coverage --ci --reporters=default --reporters=jest-junit
       - run:
           name: Send Coverage
           command: npm run codecov
