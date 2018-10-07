@@ -38,8 +38,8 @@ jobs:
 
         # run prettier!
       - run:
-          name: Prettier
-          command: npm run prettier
+          name: Prettier Check
+          command: npm run prettier-check
 
       # run tests!
       - run:

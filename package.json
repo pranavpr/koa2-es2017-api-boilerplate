@@ -21,7 +21,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "lint": "prettier --write \"{src,test}/**/*{js,ts}\"",
-    "prettier": "prettier --list-different \"{src,test}/**/*{js,ts}\"",
+    "prettier-check": "prettier --list-different \"{src,test}/**/*{js,ts}\"",
     "precommit": "lint-staged",
     "codecov": "codecov"
   },
@@ -71,6 +71,7 @@
     "dotenv": "^4.0.0",
     "husky": "^1.1.0",
     "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
     "lint-staged": "^7.3.0",
     "nodemon": "^1.12.1",
     "prettier": "1.14.3",
