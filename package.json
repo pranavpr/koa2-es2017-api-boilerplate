@@ -10,13 +10,26 @@
   },
   "scripts": {
     "prestart": "npm run -s build",
-    "start": "node dist/index.js",
-    "dev":
-      "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "start": "node dist/src/index.js",
+    "start:dev": "nodemon --watch src/**/* -e ts,tsx --exec ts-node --extensions '.ts,.tsx' src/index.ts",
+    "dev": "concurrently \"npm run start:dev\" \"npm run type-check:watch\" ",
     "clean": "rimraf dist",
-    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
     "test": "jest",
-    "lint": "esw -w src test"
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "lint": "prettier --write \"{src,test}/**/*{js,ts}\"",
+    "prettier-check": "prettier --list-different \"{src,test}/**/*{js,ts}\"",
+    "precommit": "lint-staged",
+    "codecov": "codecov"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "npm run lint",
+      "git add"
+    ]
   },
   "keywords": [
     "koa2",
@@ -25,69 +38,81 @@
     "es2015",
     "es2016",
     "es2017",
-    "jest",
-    "eslint"
+    "jest"
   ],
   "license": "MIT",
   "dependencies": {
     "@koa/cors": "2",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
+    "@types/dotenv": "^4.0.3",
+    "@types/es6-promise": "^3.3.0",
+    "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^5.0.1",
+    "@types/koa-morgan": "^1.0.4",
+    "@types/koa-router": "^7.0.32",
+    "@types/koa__cors": "^2.2.3",
+    "@types/node": "^10.11.3",
+    "@types/supertest": "^2.0.6",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",
-    "koa-router": "^7.2.1",
-    "rimraf": "^2.6.2"
+    "koa-router": "^7.2.1"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.0",
-    "babel-jest": "^21.0.2",
-    "babel-register": "^6.26.0",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-typescript": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "@types/jest": "^23.3.3",
+    "concurrently": "^4.0.1",
     "dotenv": "^4.0.0",
-    "eslint": "^4.7.2",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^21.1.0",
-    "eslint-watch": "^3.1.2",
-    "jest": "^21.1.0",
+    "husky": "^1.1.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^7.3.0",
     "nodemon": "^1.12.1",
-    "supertest": "^3.0.0"
+    "prettier": "1.14.3",
+    "supertest": "^3.0.0",
+    "ts-jest": "^23.10.4",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.1"
   },
   "babel": {
     "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
+      "@babel/preset-env",
+      "@babel/typescript"
     ],
-    "plugins": ["transform-object-rest-spread"],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ],
     "sourceMaps": true,
     "retainLines": true
   },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "plugins": ["import", "jest"],
-    "parserOptions": {
-      "ecmaVersion": 2017,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true,
-      "jest": true,
-      "es6": true
-    },
-    "extends": ["eslint:recommended"],
-    "rules": {
-      "jest/no-focused-tests": 2,
-      "jest/no-identical-title": 2
-    }
-  },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/.circle/",
+      "<rootDir>/dist/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "testRegex": "(/test/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(t|j)s?$": "ts-jest"
+    }
   },
   "directories": {
     "test": "test"

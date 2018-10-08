@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es2017",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true,
+    "baseUrl": ".",
+    "pretty": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "src/typings/*"
+      ]
+    },
+
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "test"
+  ]
+}

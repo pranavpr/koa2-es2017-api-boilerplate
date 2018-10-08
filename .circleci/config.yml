@@ -29,20 +29,25 @@ jobs:
 
       - run:
           name: Install Dependencies
-          command: yarn install && yarn add -D codecov jest-junit
+          command: npm install && npm install -D codecov jest-junit
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+        # run prettier!
+      - run:
+          name: Prettier Check
+          command: npm run prettier-check
+
       # run tests!
       - run:
           name: Test
-          command: JEST_JUNIT_OUTPUT=coverage/test-results.xml yarn test --coverage --testResultsProcessor ./node_modules/jest-junit
+          command: JEST_JUNIT_OUTPUT=coverage/test-results.xml npm run test --coverage --ci --reporters=default --reporters=jest-junit
       - run:
           name: Send Coverage
-          command: yarn run codecov
+          command: npm run codecov
       - store_test_results:
           path: coverage
       - store_artifacts:
