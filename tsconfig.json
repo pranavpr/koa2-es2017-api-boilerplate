@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "target": "es2017",
+    "lib": ["es5", "es6"],
+    "target": "es6",
+    "moduleResolution": "node",
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "./dist",
@@ -10,13 +12,8 @@
     "pretty": true,
     "declaration": true,
     "skipLibCheck": true,
-    "paths": {
-      "*": [
-        "node_modules/*",
-        "src/typings/*"
-      ]
-    },
-
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "resolveJsonModule": true
   },
   "include": [

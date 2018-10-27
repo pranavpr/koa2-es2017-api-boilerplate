@@ -77,21 +77,7 @@ will compile your src into `/dist`, and
 npm start
 ```
 
-will run `build` (via the `prestart` hook) and start the compiled application from the `/dist` folder.
-
-The last command is generally what most hosting providers use to start your application when deployed, so it should take care of everything.
-
-## FAQ
-
-**Where is all the configuration for ESLint, Jest and Babel?**
-
-In `package.json`. Feel free to extract them in separate respective config files if you like.
-
-**Why are you using `babel-register` instead of `babel-node`?**
-
-`babel-node` contains a small "trap", it loads Babel's [polyfill](https://babeljs.io/docs/usage/polyfill/) by default. This means that if you use something that needs to be polyfilled, it'll work just fine in development (because `babel-node` polyfills it automatically) but it'll break in production because it needs to be explicitely included in Babel's CLI which handles the final build.
-
-In order to avoid such confusions, `babel-register` is a more sensible approach in keeping the development and production runtimes equal. By using [babel-preset-env](https://github.com/babel/babel-preset-env) only code that's not supported by the running environment is transpiled and any polyfills required are automatically inserted.
+will start the compiled application from the `/dist` folder.
 
 ## License
 MIT License. See the [LICENSE](LICENSE) file.
