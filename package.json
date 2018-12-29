@@ -52,7 +52,9 @@
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-morgan": "^1.0.1",
-    "koa-router": "^7.2.1"
+    "koa-router": "^7.2.1",
+    "swagger2": "^1.0.4",
+    "swagger2-koa": "^1.0.3"
   },
   "devDependencies": {
     "@types/jest": "^23.3.3",
