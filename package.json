@@ -29,30 +29,30 @@
     ],
     "license": "MIT",
     "dependencies": {
-        "@koa/cors": "2",
-        "@babel/cli": "^7.1.0",
-        "@babel/core": "^7.1.0",
-        "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+        "@koa/cors": "3.0.0",
+        "@babel/cli": "^7.7.0",
+        "@babel/core": "^7.7.2",
+        "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
         "@babel/preset-env": "^7.1.0",
-        "koa": "^2.5.3",
+        "koa": "^2.11.0",
         "koa-bodyparser": "^4.2.1",
         "koa-morgan": "^1.0.1",
         "koa-router": "^7.4.0",
-        "rimraf": "^2.6.2"
+        "rimraf": "^3.0.0"
     },
     "devDependencies": {
-        "babel-eslint": "^10.0.1",
-        "babel-jest": "^23.6.0",
+        "babel-eslint": "^10.0.3",
+        "babel-jest": "^24.9.0",
         "@babel/register": "^7.0.0",
         "babel-core": "7.0.0-bridge.0",
-        "dotenv": "^6.0.0",
-        "eslint": "^5.6.1",
-        "eslint-plugin-import": "^2.14.0",
-        "eslint-plugin-jest": "^21.23.0",
-        "eslint-watch": "^4.0.2",
-        "jest": "^23.6.0",
-        "nodemon": "^1.18.4",
-        "supertest": "^3.3.0"
+        "dotenv": "^8.2.0",
+        "eslint": "^6.6.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-jest": "^23.0.4",
+        "eslint-watch": "^6.0.1",
+        "jest": "^24.9.0",
+        "nodemon": "^1.19.4",
+        "supertest": "^4.0.2"
     },
     "babel": {
         "presets": [
